@@ -604,9 +604,9 @@ SHOP_HTML = r"""
       <div class="price-card featured">
         <span class="badge">🎉 ฟรีสำหรับ 10 คนแรก</span>
         <h3>License แบบถาวร</h3>
-        <div class="price-original">ราคาปกติ ฿xxx</div>
+        <div class="price-original">ราคาปกติ ฿199</div>
         <div class="price-tag">ฟรี <small>สำหรับ 10 คนแรก</small></div>
-        <div class="price-note">หลังจากนั้นราคา ฿xxx จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
+        <div class="price-note">หลังจากนั้นราคา ฿199 จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
         <ul>
           <li>ใช้งานได้ครบทุกฟีเจอร์</li>
           <li>ไม่มีวันหมดอายุ</li>
@@ -656,8 +656,9 @@ SHOP_HTML = r"""
       <summary>ทำไม Windows Defender หรือแอนตี้ไวรัสเตือนตอนเปิดโปรแกรม?</summary>
       <div class="faq-body">
         โปรแกรมนี้ควบคุมการแตะหน้าจอ Emulator แบบอัตโนมัติ ซึ่งเป็นพฤติกรรมที่คล้ายกับเครื่องมือ
-        ประเภทที่แอนตี้ไวรัสมักเฝ้าระวัง (ไม่ใช่เพราะมีไวรัสจริง) ถ้าเจอคำเตือน ให้เพิ่มโปรแกรมนี้เป็น
-        <strong>ข้อยกเว้น (Exclusion)</strong> ใน Windows Defender ก่อนเปิดใช้งาน
+        ประเภทที่แอนตี้ไวรัสมักเฝ้าระวัง (ไม่ใช่เพราะมีไวรัสจริง) ถ้าเจอหน้าจอสีฟ้า
+        "Windows protected your PC" ให้กดลิงก์ <strong>"More info"</strong> แล้วกดปุ่ม
+        <strong>"Run anyway"</strong> ที่โผล่มา ทำครั้งเดียวก็พอ
       </div>
     </details>
 
@@ -704,7 +705,7 @@ SHOP_HTML = r"""
   // =========================================================
   // ⚠️ แก้ 2 ค่านี้เป็นของจริงก่อนใช้งาน
   // =========================================================
-  const DOWNLOAD_URL = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest/download/CookieRunAutoGo_Setup_v1.0.0.exe";
+  const DOWNLOAD_URL = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest/download/CookieRunAutoGo_Setup_v1.0.1.exe";
   const FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=61593159645007";
 
   document.querySelectorAll("#download-link").forEach(el => el.href = DOWNLOAD_URL);
@@ -946,6 +947,15 @@ GUIDE_HTML = r"""
       💡 ไม่ต้องแตกไฟล์หรือย้ายไฟล์เองเหมือนก่อนหน้านี้อีกแล้ว ทั้งตัวโปรแกรมและไฟล์ template
       ทั้งหมดจะถูกติดตั้งไว้ด้วยกันโดยอัตโนมัติเสมอ ไม่มีทางแยกกันได้ ไม่ต้องกังวลเรื่องวางไฟล์
       ผิดที่อีกต่อไป
+    </div>
+    <div class="callout warn">
+      ⚠️ <strong style="color:var(--text)">ถ้าเจอหน้าจอสีฟ้า "Windows protected your PC"</strong>
+      เป็นเรื่องปกติสำหรับโปรแกรมใหม่ที่ยังไม่มี Digital Signature (ไม่ใช่ไวรัส) วิธีข้าม:
+      <ol style="margin:10px 0 0; padding-left:20px;">
+        <li>คลิกลิงก์ <strong style="color:var(--text)">"More info"</strong> (ตัวเล็กๆ ใต้ข้อความ)</li>
+        <li>จะมีปุ่ม <strong style="color:var(--text)">"Run anyway"</strong> โผล่มา กดปุ่มนั้น</li>
+      </ol>
+      โปรแกรมจะเปิด/ติดตั้งต่อตามปกติทันที ทำครั้งเดียวก็พอ
     </div>
   </section>
 

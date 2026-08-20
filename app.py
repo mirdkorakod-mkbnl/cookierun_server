@@ -604,9 +604,9 @@ SHOP_HTML = r"""
       <div class="price-card featured">
         <span class="badge">🎉 ฟรีสำหรับ 10 คนแรก</span>
         <h3>License แบบถาวร</h3>
-        <div class="price-original">ราคาปกติ ฿199</div>
+        <div class="price-original">ราคาปกติ ฿xxx</div>
         <div class="price-tag">ฟรี <small>สำหรับ 10 คนแรก</small></div>
-        <div class="price-note">หลังจากนั้นราคา ฿199 จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
+        <div class="price-note">หลังจากนั้นราคา ฿xxx จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
         <ul>
           <li>ใช้งานได้ครบทุกฟีเจอร์</li>
           <li>ไม่มีวันหมดอายุ</li>
@@ -854,7 +854,7 @@ GUIDE_HTML = r"""
       <li><a href="#step2">ขั้นตอนที่ 2: ตั้งค่าความละเอียดจอเป็น 16:9</a></li>
       <li><a href="#step3">ขั้นตอนที่ 3: ติดตั้งเกมและเข้าสู่ระบบ</a></li>
       <li><a href="#step4">ขั้นตอนที่ 4: เปิด ADB Debugging</a></li>
-      <li><a href="#step5">ขั้นตอนที่ 5: วางไฟล์โปรแกรมให้ถูกโครงสร้าง</a></li>
+      <li><a href="#step5">ขั้นตอนที่ 5: ติดตั้งโปรแกรม</a></li>
       <li><a href="#step6">ขั้นตอนที่ 6: เปิดโปรแกรมและ Activate License</a></li>
       <li><a href="#step7">ขั้นตอนที่ 7: ตั้งค่า ADB Path และ Device ID</a></li>
       <li><a href="#step8">ขั้นตอนที่ 8: เริ่มใช้งาน</a></li>
@@ -937,21 +937,15 @@ GUIDE_HTML = r"""
 
   <section class="step-block" id="step5">
     <span class="step-tag">ขั้นตอนที่ 5</span>
-    <h2>วางไฟล์โปรแกรมให้ถูกโครงสร้าง</h2>
-    <p>แตกไฟล์ที่ได้รับมาไว้ในโฟลเดอร์เดียว ห้ามแยกไฟล์ออกจากกัน:</p>
-    <table>
-      <tbody>
-        <tr><td colspan="2" style="font-family:monospace; font-size:13px; color:var(--text); white-space:pre;">CookieRunAutoGo/
-├── CookieRunAutoGo.exe
-├── assets/
-│   ├── screen_reference.txt   ← ไฟล์นี้สำคัญมาก (ระบบ auto-scale ใช้)
-│   ├── lobby_page_1.png
-│   └── ... (template อื่นๆ อีกจำนวนมาก)</td></tr>
-      </tbody>
-    </table>
-    <div class="callout warn">
-      ⚠️ ถ้าไม่เจอไฟล์ <code>assets/screen_reference.txt</code> แปลว่าได้รับไฟล์มาไม่ครบ
-      ติดต่อผู้ขายทันที
+    <h2>ติดตั้งโปรแกรม</h2>
+    <p>
+      ดับเบิลคลิกไฟล์ที่ดาวน์โหลดมา (<code>CookieRunAutoGo_Setup.exe</code>) แล้วกด
+      "Next" ไปเรื่อยๆ จนติดตั้งเสร็จ — เลือกติ๊ก "สร้างไอคอนบน Desktop" ระหว่างทางได้ถ้าต้องการ
+    </p>
+    <div class="callout">
+      💡 ไม่ต้องแตกไฟล์หรือย้ายไฟล์เองเหมือนก่อนหน้านี้อีกแล้ว ทั้งตัวโปรแกรมและไฟล์ template
+      ทั้งหมดจะถูกติดตั้งไว้ด้วยกันโดยอัตโนมัติเสมอ ไม่มีทางแยกกันได้ ไม่ต้องกังวลเรื่องวางไฟล์
+      ผิดที่อีกต่อไป
     </div>
   </section>
 
@@ -959,8 +953,9 @@ GUIDE_HTML = r"""
     <span class="step-tag">ขั้นตอนที่ 6</span>
     <h2>เปิดโปรแกรมและ Activate License</h2>
     <p>
-      ดับเบิลคลิก <code>CookieRunAutoGo.exe</code> หน้าต่างแรกจะให้กรอก License Key —
-      กรอกคีย์ที่ได้รับจากผู้ขาย แล้วกด Activate (คีย์ 1 ดอกใช้ได้ 1 เครื่องเท่านั้น)
+      เปิดโปรแกรมจาก Shortcut บน Desktop (หรือค้นหาคำว่า "CookieRunAutoGo" ใน Start Menu)
+      หน้าต่างแรกจะให้กรอก License Key — กรอกคีย์ที่ได้รับจากผู้ขาย แล้วกด Activate
+      (คีย์ 1 ดอกใช้ได้ 1 เครื่องเท่านั้น)
     </p>
   </section>
 
@@ -978,6 +973,10 @@ GUIDE_HTML = r"""
     <p>
       ตรวจสอบว่าเกมอยู่ที่หน้า Lobby ตั้งค่า Boost ตามต้องการ แล้วกด "▶️ เริ่มบอท (START)"
     </p>
+    <div class="callout">
+      💡 ทุก Checkbox (HP Extension, Power Jelly, Fast Start ฯลฯ) เริ่มต้นเป็น "ไม่เลือก"
+      ทั้งหมด ต้องกดเลือกเองทุกตัวที่ต้องการใช้ ไม่มีตัวไหนถูกเลือกไว้ล่วงหน้าให้
+    </div>
   </section>
 
   <section class="step-block" id="troubleshoot">
@@ -986,7 +985,7 @@ GUIDE_HTML = r"""
       <thead><tr><th>อาการ</th><th>วิธีแก้</th></tr></thead>
       <tbody>
         <tr><td data-label="อาการ">บอทหาปุ่มไม่เจอเลยตั้งแต่เริ่ม</td><td data-label="วิธีแก้">กลับไปขั้นตอนที่ 2 ตั้งใหม่ให้เป็น 16:9 แล้ว Restart Emulator</td></tr>
-        <tr><td data-label="อาการ">บอทกดตำแหน่งผิด ไม่ตรงปุ่ม</td><td data-label="วิธีแก้">เช็คว่าไฟล์ screen_reference.txt อยู่ในโฟลเดอร์ assets/ ครบถ้วน</td></tr>
+        <tr><td data-label="อาการ">บอทกดตำแหน่งผิด ไม่ตรงปุ่ม</td><td data-label="วิธีแก้">เช็คว่าไฟล์ screen_reference.txt อยู่ในโฟลเดอร์ assets/ ของที่ติดตั้งไว้ (ปกติคือ AppData\Local\CookieRunAutoGo\assets\) ถ้าไม่มีให้ติดตั้งใหม่</td></tr>
         <tr><td data-label="อาการ">เปลี่ยนความละเอียด Emulator แล้วบอทพังกะทันหัน</td><td data-label="วิธีแก้">ตรวจสอบว่ายังเป็น 16:9 อยู่หรือไม่</td></tr>
       </tbody>
     </table>
@@ -998,7 +997,7 @@ GUIDE_HTML = r"""
       <li>ตั้งความละเอียด Emulator เป็น 16:9 แล้ว Restart Emulator แล้ว</li>
       <li>ล็อกอินเกมและเข้าถึงหน้า Lobby ได้แล้ว</li>
       <li>เปิด ADB Debugging ในตัว Emulator แล้ว</li>
-      <li>ไฟล์ assets/ (รวม screen_reference.txt) อยู่ข้างๆ .exe ครบถ้วน</li>
+      <li>ติดตั้งโปรแกรมผ่าน Setup.exe เรียบร้อยแล้ว</li>
       <li>Activate License สำเร็จแล้ว</li>
       <li>กด "ทดสอบ ADB" แล้วขึ้นว่าเชื่อมต่อสำเร็จ</li>
     </ul>

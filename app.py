@@ -705,7 +705,7 @@ SHOP_HTML = r"""
   // =========================================================
   // ⚠️ แก้ 2 ค่านี้เป็นของจริงก่อนใช้งาน
   // =========================================================
-  const DOWNLOAD_URL = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest/download/CookieRunAutoGo_Setup_v1.0.1.exe";
+  const DOWNLOAD_URL = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest/download/CookieRunAutoGo_Setup_v1.0.0.exe";
   const FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=61593159645007";
 
   document.querySelectorAll("#download-link").forEach(el => el.href = DOWNLOAD_URL);

@@ -703,14 +703,29 @@ SHOP_HTML = r"""
 
 <script>
   // =========================================================
-  // ⚠️ แก้ 2 ค่านี้เป็นของจริงก่อนใช้งาน
+  // ⚠️ แก้แค่ค่านี้ค่าเดียว (เพจ Facebook ไม่เปลี่ยนบ่อย จึง hardcode ได้)
+  // ส่วนลิงก์ดาวน์โหลดดึงจาก /version API แบบไดนามิกแล้ว (ค่าเดียวกับที่ตั้งใน
+  // Environment Variable DOWNLOAD_URL บน Render) แก้ที่จุดเดียวจบ ไม่ต้องมาแก้ไฟล์นี้
+  // ซ้ำทุกครั้งที่ออกเวอร์ชันใหม่อีกต่อไป
   // =========================================================
-  const DOWNLOAD_URL = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest/download/CookieRunAutoGo_Setup_v1.0.0.exe";
   const FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=61593159645007";
 
-  document.querySelectorAll("#download-link").forEach(el => el.href = DOWNLOAD_URL);
   document.querySelectorAll("#facebook-link, #facebook-link-footer").forEach(el => el.href = FACEBOOK_PAGE_URL);
   document.querySelectorAll('.price-card a.btn').forEach(el => el.href = FACEBOOK_PAGE_URL);
+
+  // ดึงลิงก์ดาวน์โหลดล่าสุดจาก /version API (แหล่งข้อมูลเดียวกับที่ตัวโปรแกรมใช้เช็ค
+  // อัปเดต) ถ้าดึงไม่สำเร็จ (เน็ตหลุด ฯลฯ) จะ fallback ไปหน้า Releases ทั่วไปแทน
+  fetch("/version")
+    .then(res => res.json())
+    .then(data => {
+      const url = data.download_url || "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest";
+      document.querySelectorAll("#download-link").forEach(el => el.href = url);
+    })
+    .catch(() => {
+      document.querySelectorAll("#download-link").forEach(
+        el => el.href = "https://github.com/mirdkorakod-mkbnl/cookierun-autogo-releases/releases/latest"
+      );
+    });
 </script>
 
 </body>

@@ -1,0 +1,32 @@
+name: Keep Render Server Awake
+
+# =========================================================
+# ปลุกเซิร์ฟเวอร์ License Server บน Render (แพ็กเกจฟรี) ไม่ให้หลับเพราะไม่มีคนใช้งาน
+# Render แพ็กเกจฟรีจะปิดเซิร์ฟเวอร์เองถ้าไม่มี request เข้ามา ~15 นาที พอมี request
+# ใหม่เข้ามาต้องใช้เวลา 30-60+ วิ ปลุกตัวเองขึ้นมาใหม่ (ลูกค้าอาจเจอ 502 Bad Gateway
+# ระหว่างนั้น) workflow นี้จะ ping เซิร์ฟเวอร์ทุก 10 นาทีเพื่อไม่ให้มันมีโอกาสหลับเลย
+#
+# ⚠️ หมายเหตุ: GitHub Actions scheduled workflow ไม่รับประกันว่าจะรันตรงเวลาเป๊ะ
+# ทุกครั้ง (บางครั้ง GitHub อาจดีเลย์ไปหลายนาทีช่วงที่ระบบโหลดสูง) วิธีนี้ช่วยลดโอกาส
+# เซิร์ฟเวอร์หลับได้มาก แต่ไม่ได้การันตี 100% เท่าการอัปเกรดแพ็กเกจเสียเงินของ Render
+# =========================================================
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: # กดรันเองได้จากแท็บ Actions บน GitHub เพื่อทดสอบทันที ไม่ต้องรอตามตาราง
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping server to keep it awake
+        run: |
+          echo "กำลัง ping เซิร์ฟเวอร์..."
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://cookierun-server.onrender.com/)
+          echo "ได้ HTTP status: $response"
+          if [ "$response" -ne 200 ]; then
+            echo "⚠️ เซิร์ฟเวอร์ไม่ตอบ 200 (อาจกำลังปลุกตัวเองอยู่ หรือมีปัญหาจริง ลองเช็คที่ Render Dashboard)"
+          else
+            echo "✅ เซิร์ฟเวอร์ตอบสนองปกติ"
+          fi

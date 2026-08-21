@@ -604,9 +604,9 @@ SHOP_HTML = r"""
       <div class="price-card featured">
         <span class="badge">🎉 ฟรีสำหรับ 10 คนแรก</span>
         <h3>License แบบถาวร</h3>
-        <div class="price-original">ราคาปกติ ฿199</div>
+        <div class="price-original">ราคาปกติ ฿xxx</div>
         <div class="price-tag">ฟรี <small>สำหรับ 10 คนแรก</small></div>
-        <div class="price-note">หลังจากนั้นราคา ฿199 จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
+        <div class="price-note">หลังจากนั้นราคา ฿xxx จ่ายครั้งเดียว ใช้ได้ตลอดชีพ</div>
         <ul>
           <li>ใช้งานได้ครบทุกฟีเจอร์</li>
           <li>ไม่มีวันหมดอายุ</li>
